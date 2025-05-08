@@ -2,13 +2,15 @@ import os
 import openai
 from dotenv import load_dotenv
 
-# Umgebungsvariablen laden und API-Key setzen
 load_dotenv()
 openai.api_key = os.getenv("OPENAI_API_KEY")
 
-def summarize_articles(articles):
+def summarize_articles(articles: list[dict]) -> str:
+    """
+    Nimmt eine Liste von Artikeln (mit 'title','link','summary')
+    und gibt ein HTML-Snippet mit Überschriften, Zusammenfassungen und Links zurück.
+    """
     summaries = ""
-    
     for article in articles:
         prompt = f"Fasse diesen Artikel zusammen:\n{article['summary']}\n"
         try:
@@ -26,5 +28,4 @@ def summarize_articles(articles):
             )
         except Exception as e:
             print(f"Fehler bei der Zusammenfassung: {e}")
-    
     return summaries

@@ -5,31 +5,29 @@ from email.mime.multipart import MIMEMultipart
 from dotenv import load_dotenv
 from datetime import datetime
 
-# Umgebungsvariablen laden
 load_dotenv()
 
-def send_email(subject, body, to_email):
-    # Credentials aus .env
+def send_email(subject: str, body: str, to_email: str) -> None:
+    """
+    Sendet eine HTML-Mail mit dem gegebenen Subject und Body an to_email.
+    """
     from_email = os.getenv("EMAIL_USER")
     password   = os.getenv("EMAIL_PASS")
 
-    # E-Mail-Header
     msg = MIMEMultipart("alternative")
     msg["From"]    = from_email
     msg["To"]      = to_email
     msg["Subject"] = subject
 
-    # HTML-Body (hier verwenden wir body, das bereits HTML enthält)
-    html_part = MIMEText(body + 
+    html = (
+        body +
         f"<p style=\"font-size:small; color:gray;\">"
         f"Automatisch generiert am {datetime.utcnow().strftime('%Y-%m-%d %H:%M UTC')}"
-        f"</p>", 
-        "html"
+        f"</p>"
     )
-    msg.attach(html_part)
+    msg.attach(MIMEText(html, "html"))
 
     try:
-        # Verbindung zum SMTP-Server
         server = smtplib.SMTP("smtp.gmail.com", 587)
         server.starttls()
         server.login(from_email, password)
