@@ -1,0 +1,108 @@
+"chemical recycling"
+"Advanced Recycling"
+"pyrolysis oil"
+Pyrolysis AND "plastic waste"
+"mass balance approach" AND "Chemical Recycling" OR "Advanced Recycling"
+LyondellBasell AND „Chemical Recycling“ 
+Freepoint and „Chemical Recycling“
+"Freepoint Eco-Systems"
+聚烯烃 热解
+化学回收
+"2G CHEMICAL PLASTIC RECYCLING, S.L"
+2GCPR
+Agilyx
+"ARCUS Greencycling Technologies"
+"Aju Industrial Co., Ltd."
+"Alterra Energy"
+"Anhui Oursun Resource Technology Co."
+Biofabrik AND "Chemisches Recycling"
+Biotrend
+BlueAlp
+"Blue Cycle"
+"Braven Environmental, LLC"
+"Brightmark Plastics"
+"Carboliq / CARBOWEST"
+Cefic AND Chemical Recycling
+"Chemical Recycling Europe"
+"Circle X Group"
+"Clean-Seas Inc."
+"Corsair Group" AND Recycling
+"Cyclyx"
+"DR. ANDREAS KURZ"
+"Dow Chemicals"
+"E Yeoncheon Co.,Ltd"
+Earfuls
+"EcoHydroCarbon sp. z o.o."
+"Enespa"
+"Environmental Solutions (Asia) Pte Ltd (ESA)"
+"Exxon Mobil" AND "Advanced Recycling" OR "Chemical Recycling"
+"FTE Clean Environment Company Limited"
+"Fuenix Ecogy II BV"
+Gr3n
+"GREENMANTRA TECHNOLOGIES"
+"Green-Future.cz a.s."
+"HCR CO.,LTD"
+"Hintes Oil"
+"Honeywell AND Sacyr
+"Indaver Plastics"
+"Ineos" AND "Chemical Recycling" 
+Itero
+"Ji Pyungsun Energy"
+Kiertoketju
+"Kisung Steel .Co.,Ltd."
+"Klean Industries with RGH"
+"Kolmar GROUP AG"
+Lamor
+"MARIA LAURA MASTELLONE"
+"MARTIN NITZ"
+Mevra
+"Michal Pivrnec"
+"Mitsubishi Chemical"
+"MoReTec"
+"Mura Technology"
+"Myeongjin Industrial Co., Ltd"
+"Nantek Hub SL"
+Neste AND "Chemical Recycling"
+"New Eco One Co., Ltd"
+"New Hope Energy"
+"Nexus Circular"
+"OLMMER Sp. Z.o.o."
+OMV AND "Chemisches Recycling" OR Reoil
+"OPE Sp. z o.o."
+"PROYECTOS DE ECONOMÍA CIRCULAR"
+"PlastEco Ltd. (Enespa"
+"Plastic Energy"
+Plastyx
+"Preco Circular"
+Pruvia
+Pryme
+"Quantafuel Skive ApS"
+"Reclean Co., Ltd."
+"Recraft Energy"
+"Recupero Etico Sostenibile"
+Renasci
+"Renew ELP"
+Resiclo
+Resynergi
+"Revotech Co., Ltd."
+"Romeo Group OY"
+SABIC AND "Chemical Recycling"
+"SCG Chemicals"
+"SEPCO INDUSTRIES CO., LTD"
+"SK Geo Centric & Plastic Energy"
+"SK chemicals" and "plastic waste"
+"Circular recycle"
+"SUNJIN ENERGY Inc."
+"Sehan Recycle Inc."
+"Shell Chemicals" AND "Chemical Recycling" OR "Advanced Recycling"
+"Sustane Chester"
+"SynCycle Operations GmbH"
+Synpet
+"TOTAL ENERGIES" AND "Chemical Recycling"
+"TRIFOL Resources Limited"
+"Tubis AG"
+Versalis AND "Chemical Recycling"
+"Waste Energy Solution"
+"Waste Plastic Upcycling A/S"
+"Wastewise Group Oy"
+Xcycle
