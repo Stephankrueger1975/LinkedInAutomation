@@ -2,9 +2,11 @@ name: CI
 
 on:
   push:
-    branches: [ main ]
+    branches:
+      - main
   pull_request:
-    branches: [ main ]
+    branches:
+      - main
 
 jobs:
   test:
@@ -21,39 +23,8 @@ jobs:
 
       - name: Install dependencies
         run: |
-          pip install --upgrade pip
+          python -m pip install --upgrade pip
           pip install pytest feedparser python-dotenv openai
 
       - name: Run tests
-        run: pytestname: CI
-
-on:
-  push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
-
-jobs:
-  build-and-test:
-    runs-on: ubuntu-latest
-
-    steps:
-    - name: Repository auschecken
-      uses: actions/checkout@v4
-
-    - name: Python installieren
-      uses: actions/setup-python@v4
-      with:
-        python-version: '3.x'
-
-    - name: Abhängigkeiten installieren
-      run: |
-        python -m venv .venv
-        source .venv/bin/activate
-        pip install --upgrade pip
-        pip install pytest feedparser python-dotenv openai
-
-    - name: Tests ausführen
-      run: |
-        source .venv/bin/activate
-        pytest
+        run: pytest
