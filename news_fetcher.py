@@ -1,55 +1,49 @@
+# news_fetcher.py
+
 import feedparser
+from datetime import datetime, timedelta
 import urllib.parse
-from datetime import datetime, timedelta, timezone
+import logging
 
-def fetch_articles(search_terms, rss_base_url, days_back=3):
+logger = logging.getLogger(__name__)
+
+def fetch_articles(
+    search_terms: list[str],
+    rss_base_url: str = "https://www.linkedin.com/rss/search",
+    days_back: int = 3
+) -> list[dict]:
     """
-    Ruft Artikel aus LinkedIn-RSS-Feeds ab, filtert nach Datum und Suchbegriffen.
-
-    Args:
-        search_terms (list of str): Liste der Schlagwörter.
-        rss_base_url (str): Basis-URL für LinkedIn-RSS-Feeds (z.B. "https://www.linkedin.com/rss/search?q=").
-        days_back (int): Zeitraum in Tagen für Rückwärtssuche (Standard: 3).
-
-    Returns:
-        list of dict: Gefilterte Artikel mit 'title', 'link', 'summary' und 'published'.
+    Sucht in den letzten `days_back` Tagen nach öffentlichen LinkedIn-Beiträgen,
+    die eines der `search_terms` im RSS-Feed enthalten.
     """
-    cutoff = datetime.now(timezone.utc) - timedelta(days=days_back)
-    collected = []
+    cutoff = datetime.utcnow() - timedelta(days=days_back)
     seen_links = set()
+    all_articles = []
 
     for term in search_terms:
         encoded = urllib.parse.quote(term)
-        feed_url = f"{rss_base_url}{encoded}"
+        feed_url = f"{rss_base_url}?q={encoded}"
         feed = feedparser.parse(feed_url)
 
-        if feed.bozo:
-            print(f"[WARN] Fehler beim Parsen des Feeds für '{term}': {feed.bozo_exception}")
-            continue
+        for entry in feed.entries:
+            # Ermittlung des Veröffentlichungsdatums
+            pub = getattr(entry, "published_parsed", None)
+            published = datetime(*pub[:6]) if pub else None
 
-        for entry in getattr(feed, 'entries', []):
-            # Einträge ohne published_parsed ignorieren
-            if not hasattr(entry, 'published_parsed'):
+            # Nur Einträge innerhalb des Zeitfensters
+            if published and published < cutoff:
                 continue
 
-            # Veröffentlichungstermin mit UTC-Zeitzone
-            published = datetime(*entry.published_parsed[:6], tzinfo=timezone.utc)
-            if published < cutoff:
+            link = entry.get("link")
+            if not link or link in seen_links:
                 continue
+            seen_links.add(link)
 
-            # Duplikate anhand des Links vermeiden
-            if entry.link in seen_links:
-                continue
+            all_articles.append({
+                "title":   entry.get("title", ""),
+                "link":    link,
+                "summary": entry.get("summary", "")
+            })
 
-            text = (entry.title + ' ' + getattr(entry, 'summary', '')).lower()
-            if any(term.lower() in text for term in search_terms):
-                collected.append({
-                    'title': entry.title,
-                    'link': entry.link,
-                    'summary': entry.summary,
-                    'published': published
-                })
-                seen_links.add(entry.link)
-
-    print(f"[INFO] Gefundene Artikel: {len(collected)} (letzte {days_back} Tage)")
-    return collected
+    logger.info(f"Gefundene Artikel: {len(all_articles)} (letzte {days_back} Tage)")
+    return all_articles
